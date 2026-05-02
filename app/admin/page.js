@@ -1,109 +1,105 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-
-const DEFAULT_DATA = {
-  groomName: 'Muhammad Bayu Ramadhan',
-  groomFather: 'Bapak Suroso',
-  groomMother: 'Ibu Tri Sayekti',
-  brideName: 'Mutyara Nurhifa Orvalla Putri',
-  brideFather: 'Bapak Henry Irwansson',
-  brideMother: 'Ibu Fitria Andjani',
-  weddingDate: '2026-05-14',
-  weddingDay: 'Kamis',
-  akadTime: '08.00 - 10.00 WIB',
-  akadLocation: 'Masjid Al-Munawwir',
-  music: '',
-  guests: []
-};
+import { useState } from 'react';
 
 export default function Admin() {
-  const [data, setData] = useState(DEFAULT_DATA);
+  const [data, setData] = useState({
+    groomName: 'Muhammad Bayu Ramadhan',
+    groomFather: 'Bapak Suroso',
+    groomMother: 'Ibu Tri Sayekti',
+    brideName: 'Mutyara Nurhifa Orvalla Putri',
+    brideFather: 'Bapak Henry Irwansson',
+    brideMother: 'Ibu Fitria Andjani',
+    date: '2026-05-14',
+    day: 'Kamis',
+    time: '08.00 - 10.00 WIB',
+    location: 'Masjid Al-Munawwir',
+    music: ''
+  });
+  const [guests, setGuests] = useState([]);
   const [newGuest, setNewGuest] = useState('');
-  const [saved, setSaved] = useState(false);
-  const [linkCopied, setLinkCopied] = useState(false);
-
-  useEffect(() => {
-    const savedData = localStorage.getItem('weddingData');
-    if (savedData) setData(JSON.parse(savedData));
-  }, []);
-
-  const handleSave = () => {
-    localStorage.setItem('weddingData', JSON.stringify(data));
-    setSaved(true);
-    setTimeout(() => setSaved(false), 2000);
-  };
+  const [generatedLink, setGeneratedLink] = useState('');
+  const [copied, setCopied] = useState('');
 
   const addGuest = () => {
-    if (newGuest.trim()) {
-      setData({...data, guests: [...data.guests, newGuest.trim()]});
-      setNewGuest('');
-    }
+    if (newGuest.trim()) { setGuests([...guests, newGuest.trim()]); setNewGuest(''); }
   };
 
-  const removeGuest = (index) => {
-    const guests = [...data.guests];
-    guests.splice(index, 1);
-    setData({...data, guests});
-  };
+  const removeGuest = (i) => setGuests(guests.filter((_, idx) => idx !== i));
 
-  const generateLinks = () => {
-    const baseUrl = window.location.origin.replace('/admin', '');
-    const links = data.guests.map(guest => `${baseUrl}/?to=${encodeURIComponent(guest)}`).join('\n');
+  const generateAllLinks = () => {
+    const base = window.location.origin;
+    const params = new URLSearchParams(data).toString();
+    const links = guests.map(g => `${base}/?to=${encodeURIComponent(g)}&${params}`).join('\n');
+    setGeneratedLink(links);
     navigator.clipboard.writeText(links);
-    setLinkCopied(true);
-    setTimeout(() => setLinkCopied(false), 3000);
+    setCopied('✅ semua link!');
+    setTimeout(() => setCopied(''), 3000);
   };
+
+  const copyOneLink = (guest) => {
+    const base = window.location.origin;
+    const params = new URLSearchParams(data).toString();
+    const link = `${base}/?to=${encodeURIComponent(guest)}&${params}`;
+    navigator.clipboard.writeText(link);
+    setCopied(`✅ ${guest}!`);
+    setTimeout(() => setCopied(''), 2000);
+  };
+
+  const updateField = (field, value) => setData({...data, [field]: value});
 
   return (
     <div style={{maxWidth: '600px', margin: '0 auto', padding: '2rem', fontFamily: 'sans-serif'}}>
-      <h1>Admin Panel 🎊</h1>
-      <p style={{color: '#666', marginBottom: '2rem'}}>生成链接发给客人!</p>
+      <h1>🎊 Generator Link Undangan</h1>
+      <p style={{color: '#666', marginBottom: '1.5rem'}}>Isi data, tambah tamu, generate link!</p>
 
-      <div style={{background: '#f5f5f5', padding: '1.5rem', borderRadius: '8px', marginBottom: '2rem'}}>
-        <h3>👨‍🦱 Data Mempelai</h3>
-        <input type="text" placeholder="Nama Pengantin Pria" value={data.groomName} onChange={e => setData({...data, groomName: e.target.value})} style={inputStyle} />
-        <input type="text" placeholder="Ayah Pengantin Pria" value={data.groomFather} onChange={e => setData({...data, groomFather: e.target.value})} style={inputStyle} />
-        <input type="text" placeholder="Ibu Pengantin Pria" value={data.groomMother} onChange={e => setData({...data, groomMother: e.target.value})} style={inputStyle} />
-        <input type="text" placeholder="Nama Pengantin Wanita" value={data.brideName} onChange={e => setData({...data, brideName: e.target.value})} style={inputStyle} />
-        <input type="text" placeholder="Ayah Pengantin Wanita" value={data.brideFather} onChange={e => setData({...data, brideFather: e.target.value})} style={inputStyle} />
-        <input type="text" placeholder="Ibu Pengantin Wanita" value={data.brideMother} onChange={e => setData({...data, brideMother: e.target.value})} style={inputStyle} />
-      </div>
-
-      <div style={{background: '#f5f5f5', padding: '1.5rem', borderRadius: '8px', marginBottom: '2rem'}}>
+      <div style={{background: '#f5f5f5', padding: '1.5rem', borderRadius: '8px', marginBottom: '1.5rem'}}>
         <h3>📅 Data Acara</h3>
-        <input type="text" placeholder="Hari (Kamis)" value={data.weddingDay} onChange={e => setData({...data, weddingDay: e.target.value})} style={inputStyle} />
-        <input type="date" value={data.weddingDate} onChange={e => setData({...data, weddingDate: e.target.value})} style={inputStyle} />
-        <input type="text" placeholder="Jam Akad" value={data.akadTime} onChange={e => setData({...data, akadTime: e.target.value})} style={inputStyle} />
-        <input type="text" placeholder="Lokasi Akad" value={data.akadLocation} onChange={e => setData({...data, akadLocation: e.target.value})} style={inputStyle} />
-        <input type="text" placeholder="Link Music (MP3)" value={data.music} onChange={e => setData({...data, music: e.target.value})} style={inputStyle} />
+        <input type="text" placeholder="Hari (Kamis)" value={data.day} onChange={e => updateField('day', e.target.value)} style={inputStyle} />
+        <input type="date" value={data.date} onChange={e => updateField('date', e.target.value)} style={inputStyle} />
+        <input type="text" placeholder="Jam" value={data.time} onChange={e => updateField('time', e.target.value)} style={inputStyle} />
+        <input type="text" placeholder="Lokasi" value={data.location} onChange={e => updateField('location', e.target.value)} style={inputStyle} />
+        <input type="text" placeholder="Music (URL MP3)" value={data.music} onChange={e => updateField('music', e.target.value)} style={inputStyle} />
       </div>
 
-      <div style={{background: '#f5f5f5', padding: '1.5rem', borderRadius: '8px', marginBottom: '2rem'}}>
-        <h3>👥 Daftar Tamu ({data.guests.length})</h3>
+      <div style={{background: '#f5f5f5', padding: '1.5rem', borderRadius: '8px', marginBottom: '1.5rem'}}>
+        <h3>👨‍🦱 Mempelai</h3>
+        <input type="text" placeholder="Nama Pria" value={data.groomName} onChange={e => updateField('groomName', e.target.value)} style={inputStyle} />
+        <input type="text" placeholder="Ayah Pria" value={data.groomFather} onChange={e => updateField('groomFather', e.target.value)} style={inputStyle} />
+        <input type="text" placeholder="Ibu Pria" value={data.groomMother} onChange={e => updateField('groomMother', e.target.value)} style={inputStyle} />
+        <input type="text" placeholder="Nama Wanita" value={data.brideName} onChange={e => updateField('brideName', e.target.value)} style={inputStyle} />
+        <input type="text" placeholder="Ayah Wanita" value={data.brideFather} onChange={e => updateField('brideFather', e.target.value)} style={inputStyle} />
+        <input type="text" placeholder="Ibu Wanita" value={data.brideMother} onChange={e => updateField('brideMother', e.target.value)} style={inputStyle} />
+      </div>
+
+      <div style={{background: '#f5f5f5', padding: '1.5rem', borderRadius: '8px', marginBottom: '1.5rem'}}>
+        <h3>👥 Daftar Tamu ({guests.length})</h3>
         <div style={{display: 'flex', gap: '0.5rem'}}>
-          <input type="text" placeholder="Nama tamu baru" value={newGuest} onChange={e => setNewGuest(e.target.value)} onKeyDown={e => e.key === 'Enter' && addGuest()} style={{flex: 1, padding: '0.75rem'}} />
+          <input type="text" placeholder="Nama tamu" value={newGuest} onChange={e => setNewGuest(e.target.value)} onKeyDown={e => e.key === 'Enter' && addGuest()} style={{flex: 1, padding: '0.75rem'}} />
           <button onClick={addGuest} style={btnStyle}>+ Tambah</button>
         </div>
         <ul style={{marginTop: '1rem', listStyle: 'none', padding: 0}}>
-          {data.guests.map((guest, i) => (
-            <li key={i} style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0.5rem', borderBottom: '1px solid #ddd', gap: '0.5rem'}}>
+          {guests.map((guest, i) => (
+            <li key={i} style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0.5rem', borderBottom: '1px solid #ddd'}}>
               <span style={{flex: 1}}>{guest}</span>
-              <button onClick={() => { navigator.clipboard.writeText(`${window.location.origin.replace('/admin', '')}/?to=${encodeURIComponent(guest)}`); }} style={{padding: '0.4rem 0.6rem', fontSize: '0.75rem', background: '#C9A86C', border: 'none', borderRadius: '4px', cursor: 'pointer', whiteSpace: 'nowrap'}}>📋 Copy</button>
+              <button onClick={() => copyOneLink(guest)} style={{padding: '0.4rem 0.6rem', fontSize: '0.75rem', background: '#C9A86C', border: 'none', borderRadius: '4px', cursor: 'pointer', whiteSpace: 'nowrap'}}>📋 Copy</button>
               <button onClick={() => removeGuest(i)} style={{color: 'red', border: 'none', background: 'none', cursor: 'pointer', padding: '0.4rem'}}>✕</button>
             </li>
           ))}
         </ul>
-        {data.guests.length > 0 && (
-          <button onClick={generateLinks} style={{...btnStyle, background: '#C9A86C', width: '100%', marginTop: '1rem'}}>
-            {linkCopied ? '✅ Link Undangan Sudah Copy!' : '🔗 Generate Link Undangan'}
+        {guests.length > 0 && (
+          <button onClick={generateAllLinks} style={{...btnStyle, background: '#C9A86C', width: '100%', marginTop: '1rem'}}>
+            {copied || '🔗 Copy Semua Link'}
           </button>
         )}
       </div>
 
-      <button onClick={handleSave} style={{...btnStyle, background: '#333', color: '#fff', width: '100%'}}>
-        {saved ? '✅ Tersimpan!' : '💾 Simpan Data'}
-      </button>
+      {generatedLink && (
+        <details style={{marginTop: '1rem'}}>
+          <summary style={{cursor: 'pointer', color: '#666'}}>📋 Lihat Semua Link</summary>
+          <pre style={{background: '#f5f5f5', padding: '1rem', overflow: 'auto', fontSize: '0.75rem', marginTop: '0.5rem', whiteSpace: 'pre-wrap', wordBreak: 'break-all'}}>{generatedLink}</pre>
+        </details>
+      )}
     </div>
   );
 }
