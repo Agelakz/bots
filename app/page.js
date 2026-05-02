@@ -1,255 +1,209 @@
-'use client'
+'use client';
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react';
 
-// Wedding Data - Edit di sini ya!
 const WEDDING_DATA = {
   groom: {
     name: 'Muhammad Bayu Ramadhan',
     father: 'Bapak Suroso',
     mother: 'Ibu Tri Sayekti',
-    image: 'https://i.imgur.com/iK7AC0z/Pngtree-indonesian_wedding_couple_wear_white_6431502_ztq8dh.png' // Ganti foto cowok
+    image: 'https://i.ibb.co/KjqVZL10/Pngtree-indonesian-wedding-couple-wear-white-6431502.png'
   },
   bride: {
     name: 'Mutyara Nurhifa Orvalla Putri',
     father: 'Bapak Henry Irwansson',
     mother: 'Ibu Fitria Andjani',
-    image: 'https://i.imgur.com/iK7AC0z/Pngtree-indonesian_wedding_couple_wear_white_6431502_ztq8dh.png' // Ganti foto cewek
+    image: 'https://i.ibb.co/KjqVZL10/Pngtree-indonesian-wedding-couple-wear-white-6431502.png'
   },
   date: '2026-05-14',
   day: 'Kamis',
-  music: '', 
+  music: '',
   events: [
     {
-      title: 'Akad',
+      name: 'Akad Nikah',
       date: 'Kamis, 14 Mei 2026',
-      time: '10:15 WITA - Selesai',
-      location: 'Jl. DR Sutomo RT 12 No 22, Karang Rejo Balikpapan Tengah'
+      time: '08.00 - 10.00 WIB',
+      location: 'Masjid Al-Munawwir'
+    },
+    {
+      name: 'Resepsi',
+      date: 'Kamis, 14 Mei 2026',
+      time: '11.00 - 14.00 WIB',
+      location: 'Gedung Pertemuan'
     }
   ]
-}
+};
 
-export default function Home() {
-  const [showMain, setShowMain] = useState(false)
-  const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
-  const [isPlaying, setIsPlaying] = useState(false)
-  const [wishes, setWishes] = useState({ name: '', attendance: 'Hadir', message: '' })
-  const audioRef = useRef(null)
-
+function Countdown({ targetDate }) {
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   useEffect(() => {
-    const targetDate = new Date(WEDDING_DATA.date).getTime()
-    
-    const updateCountdown = () => {
-      const now = new Date().getTime()
-      const diff = targetDate - now
-      
+    const timer = setInterval(() => {
+      const now = new Date().getTime();
+      const target = new Date(targetDate).getTime();
+      const diff = target - now;
       if (diff > 0) {
-        setCountdown({
+        setTimeLeft({
           days: Math.floor(diff / (1000 * 60 * 60 * 24)),
           hours: Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
           minutes: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
           seconds: Math.floor((diff % (1000 * 60)) / 1000)
-        })
+        });
       }
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [targetDate]);
+  return (
+    <div className="countdown">
+      <div className="countdown-item">
+        <span className="countdown-number">{timeLeft.days}</span>
+        <span className="countdown-label">Hari</span>
+      </div>
+      <div className="countdown-item">
+        <span className="countdown-number">{timeLeft.hours}</span>
+        <span className="countdown-label">Jam</span>
+      </div>
+      <div className="countdown-item">
+        <span className="countdown-number">{timeLeft.minutes}</span>
+        <span className="countdown-label">Menit</span>
+      </div>
+      <div className="countdown-item">
+        <span className="countdown-number">{timeLeft.seconds}</span>
+        <span className="countdown-label">Detik</span>
+      </div>
+    </div>
+  );
+}
+
+export default function Home() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [wishes, setWishes] = useState([]);
+  const [form, setForm] = useState({ name: '', message: '', presence: 'hadir' });
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (form.name && form.message) {
+      setWishes([...wishes, form]);
+      setForm({ name: '', message: '', presence: 'hadir' });
     }
-    
-    updateCountdown()
-    const interval = setInterval(updateCountdown, 1000)
-    return () => clearInterval(interval)
-  }, [])
+  };
 
-  const handleOpen = () => {
-    setShowMain(true)
-    document.getElementById('main')?.scrollIntoView({ behavior: 'smooth' })
-  }
-
-  const handleSubmitWishes = (e) => {
-    e.preventDefault()
-    alert(`Terima kasih ${wishes.name}! Doa Anda telah terkirim.`)
-    setWishes({ name: '', attendance: 'Hadir', message: '' })
-  }
-
-  const toggleMusic = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause()
-      } else {
-        audioRef.current.play()
-      }
-      setIsPlaying(!isPlaying)
+  const openInvitation = () => {
+    setIsOpen(true);
+    if (WEDDING_DATA.music) {
+      const audio = new Audio(WEDDING_DATA.music);
+      audio.play().catch(() => {});
     }
-  }
+  };
 
   return (
-    <>
-      {/* Cover Section */}
-      <section className="cover">
-        <div className="cover-content">
-          <p className="invitation-title">UNDANGAN PERNIKAHAN</p>
-          <h1>{WEDDING_DATA.groom.name.split(' ').slice(-2).join(' ')}</h1>
-          <span className="ampersand">&</span>
-          <h1 className="names">{WEDDING_DATA.bride.name.split(' ').slice(-2).join(' ')}</h1>
-          <p className="guest-message">Kepada Yth Bapak/Ibu/Saudara/i</p>
-          <button className="open-btn" onClick={handleOpen}>
-            Buka Undangan
-          </button>
-          {WEDDING_DATA.music && (
-            <button 
-              className="music-btn" 
-              onClick={toggleMusic}
-              style={{
-                position: 'fixed',
-                bottom: '20px',
-                right: '20px',
-                width: '50px',
-                height: '50px',
-                borderRadius: '50%',
-                background: 'var(--accent)',
-                border: 'none',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                zIndex: 100,
-                fontSize: '1.2rem'
-              }}
-            >
-              {isPlaying ? '🔊' : '🔇'}
-            </button>
-          )}
-        </div>
-      </section>
+    <main>
+      {!isOpen && (
+        <section className="cover">
+          <div className="cover-content">
+            <h1>Wedding Invitation</h1>
+            <p className="invitation-title">Undangan Pernikahan</p>
+            <p className="guest-message">Kepada Yth. Tamu Undangan</p>
+            <button className="open-btn" onClick={openInvitation}>Buka Undangan</button>
+          </div>
+        </section>
+      )}
+      
+      {isOpen && (
+        <>
+          <section className="cover">
+            <div className="cover-content">
+              <p className="invitation-title">Undangan Pernikahan</p>
+              <h1>{WEDDING_DATA.groom.name.split(' ').pop()}</h1>
+              <span className="ampersand">&</span>
+              <h1 className="names">{WEDDING_DATA.bride.name.split(' ').pop()}</h1>
+              <p className="guest-message">{WEDDING_DATA.day}, {new Date(WEDDING_DATA.date).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+            </div>
+          </section>
 
-      {/* Main Content */}
-      {showMain && (
-        <main id="main" className="main-content">
-          {/* Countdown Section */}
           <section className="countdown-section">
-            <p className="countdown-title">INSYA ALLAH</p>
-            <h2 className="countdown-date">{WEDDING_DATA.day}, {WEDDING_DATA.date.split('-').reverse().join(' ')}</h2>
-            <div className="countdown">
-              <div className="countdown-item">
-                <span className="countdown-number">{countdown.days}</span>
-                <span className="countdown-label">Hari</span>
-              </div>
-              <div className="countdown-item">
-                <span className="countdown-number">{countdown.hours}</span>
-                <span className="countdown-label">Jam</span>
-              </div>
-              <div className="countdown-item">
-                <span className="countdown-number">{countdown.minutes}</span>
-                <span className="countdown-label">Menit</span>
-              </div>
-              <div className="countdown-item">
-                <span className="countdown-number">{countdown.seconds}</span>
-                <span className="countdown-label">Detik</span>
-              </div>
-            </div>
+            <p className="countdown-title">Hitung Mundur</p>
+            <p className="countdown-date">{WEDDING_DATA.day}, {new Date(WEDDING_DATA.date).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+            <Countdown targetDate={WEDDING_DATA.date} />
           </section>
 
-          {/* Salam Section */}
           <section className="salam-section">
-            <div className="container">
-              <h2>Assalamu'alaikum wr. wb.</h2>
-              <p className="salam-text">
-                Tanpa mengurangi rasa hormat. Kami mengundang anda pada acara pernikahan kami.
-              </p>
-            </div>
+            <h2>Assalamu'alaykum</h2>
+            <p className="salam-text"> Maha Suci Allah yang telah menciptakan pasangan manusia untuk saling mencintai. Dengan memohon rahmat dan ridho-NYA, kami bermaksud mengundang Anda untuk menyaksikan jenjang hidup kami.</p>
           </section>
 
-          {/* Couple Section */}
           <section className="couple-section">
             <div className="container">
               <div className="couple-card">
-                <img src={WEDDING_DATA.groom.image} alt={WEDDING_DATA.groom.name} className="couple-image" />
+                <img src={WEDDING_DATA.groom.image} alt={WEDDING_DATA.groom.name} style={{width: '150px', height: '150px', borderRadius: '50%', objectFit: 'cover', marginBottom: '1rem'}} />
                 <h3 className="couple-name">{WEDDING_DATA.groom.name}</h3>
                 <p className="couple-parents">Putra dari {WEDDING_DATA.groom.father} & {WEDDING_DATA.groom.mother}</p>
               </div>
               <span className="ampersand">&</span>
               <div className="couple-card">
-                <img src={WEDDING_DATA.bride.image} alt={WEDDING_DATA.bride.name} className="couple-image" />
+                <img src={WEDDING_DATA.bride.image} alt={WEDDING_DATA.bride.name} style={{width: '150px', height: '150px', borderRadius: '50%', objectFit: 'cover', marginBottom: '1rem'}} />
                 <h3 className="couple-name">{WEDDING_DATA.bride.name}</h3>
                 <p className="couple-parents">Putri dari {WEDDING_DATA.bride.father} & {WEDDING_DATA.bride.mother}</p>
               </div>
             </div>
           </section>
 
-          {/* Event Section */}
           <section className="event-section">
+            <h2 className="section-title">Jadwal Acara</h2>
             <div className="container">
-              <h2 className="section-title">Rangkaian Acara</h2>
-              <div className="event-cards">
-                {WEDDING_DATA.events.map((event, index) => (
-                  <div key={index} className="event-card">
-                    <h3>{event.title}</h3>
-                    <p className="date">{event.date}</p>
-                    <p className="time">{event.time}</p>
-                    <p className="location">{event.location}</p>
+              {WEDDING_DATA.events.map((event, i) => (
+                <div key={i} className="event-card">
+                  <h3>{event.name}</h3>
+                  <p className="date">{event.date}</p>
+                  <p className="time">{event.time}</p>
+                  <p className="location">{event.location}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section className="wishes-section">
+            <h2 className="section-title">Ucapan & Doa</h2>
+            <form className="wishes-form" onSubmit={handleSubmit}>
+              <div className="form-group">
+                <label>Nama</label>
+                <input type="text" value={form.name} onChange={(e) => setForm({...form, name: e.target.value})} placeholder="Nama Anda" required />
+              </div>
+              <div className="form-group">
+                <label>Ucapan</label>
+                <textarea value={form.message} onChange={(e) => setForm({...form, message: e.target.value})} placeholder="Tulis ucapan..." required />
+              </div>
+              <div className="form-group">
+                <label>Kehadiran</label>
+                <select value={form.presence} onChange={(e) => setForm({...form, presence: e.target.value})}>
+                  <option value="hadir">Hadir</option>
+                  <option value="tidak">Tidak Hadir</option>
+                  <option value="ragu">Ragu-ragu</option>
+                </select>
+              </div>
+              <button type="submit" className="submit-btn">Kirim</button>
+            </form>
+            {wishes.length > 0 && (
+              <div style={{marginTop: '2rem', textAlign: 'left'}}>
+                {wishes.map((w, i) => (
+                  <div key={i} style={{padding: '1rem', marginBottom: '1rem', border: '1px solid rgba(255,255,255,0.2)'}}>
+                    <strong>{w.name}</strong> ({w.presence})
+                    <p>{w.message}</p>
                   </div>
                 ))}
               </div>
-            </div>
+            )}
           </section>
 
-          {/* Wishes Section */}
-          <section className="wishes-section">
-            <div className="container">
-              <h2 className="section-title" style={{ color: '#fff' }}>Ucapan & Doa</h2>
-              <form className="wishes-form" onSubmit={handleSubmitWishes}>
-                <div className="form-group">
-                  <label>Nama *</label>
-                  <input 
-                    type="text" 
-                    value={wishes.name}
-                    onChange={(e) => setWishes({ ...wishes, name: e.target.value })}
-                    placeholder="Masukkan nama Anda"
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <label>Konfirmasi Kehadiran *</label>
-                  <select 
-                    value={wishes.attendance}
-                    onChange={(e) => setWishes({ ...wishes, attendance: e.target.value })}
-                  >
-                    <option value="Hadir">Hadir</option>
-                    <option value="Belum Pasti">Belum Pasti</option>
-                    <option value="Tidak Hadir">Tidak Hadir</option>
-                  </select>
-                </div>
-                <div className="form-group">
-                  <label>Pesan / Doa *</label>
-                  <textarea 
-                    value={wishes.message}
-                    onChange={(e) => setWishes({ ...wishes, message: e.target.value })}
-                    placeholder="Pesan atau doa yang ingin kamu sampaikan kepada mempelai."
-                    required
-                  />
-                </div>
-                <button type="submit" className="submit-btn">Kirim</button>
-              </form>
-            </div>
-          </section>
-
-          {/* Closing Section */}
           <section className="closing-section">
-            <div className="container">
-              <h2>{WEDDING_DATA.groom.name.split(' ').slice(-2).join(' ')} & {WEDDING_DATA.bride.name.split(' ').slice(-2).join(' ')}</h2>
-              <p className="closing-text">
-                Atas kehadiran dan do'a restu dari anda semua. Kami ucapkan terima kasih yang sebesar - besarnya.
-              </p>
-              <h2 style={{ marginTop: '2rem', fontSize: '2rem' }}>Wassalamu'alaikum wr. wb.</h2>
-            </div>
+            <h2>Terima Kasih</h2>
+            <p className="closing-text">Kehadiran Anda merupakan kebahagiaan bagi kami.</p>
           </section>
-        </main>
-      )}
 
-      <footer>
-        <p>made with ❤️</p>
-      </footer>
-      {WEDDING_DATA.music && (
-        <audio ref={audioRef} src={WEDDING_DATA.music} loop />
+          <footer>
+            <p>Bayu & Tyara</p>
+          </footer>
+        </>
       )}
-    </>
-  )
+    </main>
+  );
 }
