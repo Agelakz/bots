@@ -16,22 +16,40 @@ const DEFAULT = {
   music: ''
 };
 
-function parseURLParams() {
+function getCookie(name) {
+  const matches = document.cookie.match(new RegExp('(?:^|; )' + name.replace(/([.*+?^${}()|[\]\\])/g, '\\$1') + '=([^;]*)'));
+  return matches ? decodeURIComponent(matches[1]) : null;
+}
+
+function getWeddingData() {
   if (typeof window === 'undefined') return DEFAULT;
   const params = new URLSearchParams(window.location.search);
-  return {
-    groomName: params.get('groom') || DEFAULT.groomName,
-    groomFather: params.get('groomFather') || params.get('father') || DEFAULT.groomFather,
-    groomMother: params.get('groomMother') || params.get('mother') || DEFAULT.groomMother,
-    brideName: params.get('bride') || DEFAULT.brideName,
-    brideFather: params.get('brideFather') || params.get('father2') || DEFAULT.brideFather,
-    brideMother: params.get('brideMother') || params.get('mother2') || DEFAULT.brideMother,
-    date: params.get('date') || DEFAULT.date,
-    day: params.get('day') || DEFAULT.day,
-    time: params.get('time') || DEFAULT.time,
-    location: params.get('location') || DEFAULT.location,
-    music: params.get('music') || ''
-  };
+  const guestName = params.get('to');
+  
+  let data = DEFAULT;
+  
+  // Try to get guest-specific cookie first, then default cookie
+  if (guestName) {
+    const guestCookie = getCookie(`wedding_${encodeURIComponent(guestName)}`);
+    if (guestCookie) data = JSON.parse(guestCookie);
+  }
+  
+  // Fallback to default wedding data cookie
+  if (!data.groomName || data.groomName === DEFAULT.groomName) {
+    const defaultCookie = getCookie('weddingData');
+    if (defaultCookie) data = JSON.parse(defaultCookie);
+  }
+  
+  // Fallback to URL params
+  if (params.get('groom')) data.groomName = params.get('groom');
+  if (params.get('bride')) data.brideName = params.get('bride');
+  if (params.get('date')) data.date = params.get('date');
+  if (params.get('day')) data.day = params.get('day');
+  if (params.get('time')) data.time = params.get('time');
+  if (params.get('location')) data.location = params.get('location');
+  if (params.get('music')) data.music = params.get('music');
+  
+  return data;
 }
 
 function Countdown({ targetDate }) {
@@ -63,7 +81,7 @@ export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    setData(parseURLParams());
+    setData(getWeddingData());
     const params = new URLSearchParams(window.location.search);
     setGuestName(params.get('to') || '');
   }, []);
