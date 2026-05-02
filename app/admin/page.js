@@ -21,6 +21,7 @@ export default function Admin() {
   const [data, setData] = useState(DEFAULT_DATA);
   const [newGuest, setNewGuest] = useState('');
   const [saved, setSaved] = useState(false);
+  const [linkCopied, setLinkCopied] = useState(false);
 
   useEffect(() => {
     const savedData = localStorage.getItem('weddingData');
@@ -46,23 +47,18 @@ export default function Admin() {
     setData({...data, guests});
   };
 
-  const exportConfig = () => {
-    const config = `const WEDDING_DATA = {
-  groom: { name: '${data.groomName}', father: '${data.groomFather}', mother: '${data.groomMother}', image: 'https://res.cloudinary.com/dhkwhynff/image/upload/v1777706117/Pngtree_indonesian_wedding_couple_wear_white_6431502_ztq8dh.png' },
-  bride: { name: '${data.brideName}', father: '${data.brideFather}', mother: '${data.brideMother}', image: 'https://res.cloudinary.com/dhkwhynff/image/upload/v1777706117/Pngtree_indonesian_wedding_couple_wear_white_6431502_ztq8dh.png' },
-  date: '${data.weddingDate}',
-  day: '${data.weddingDay}',
-  music: '${data.music}',
-  events: [{ name: 'AKAD NIKAH', date: '${data.weddingDay}, ${new Date(data.weddingDate).toLocaleDateString('id-ID', {day:'numeric',month:'long',year:'numeric'})}', time: '${data.akadTime}', location: '${data.akadLocation}' }]
-};`;
-    navigator.clipboard.copyText(config);
-    alert('Config copied! Paste di page.js');
+  const generateLinks = () => {
+    const baseUrl = window.location.origin.replace('/admin', '');
+    const links = data.guests.map(guest => `${baseUrl}/?to=${encodeURIComponent(guest)}`).join('\n');
+    navigator.clipboard.writeText(links);
+    setLinkCopied(true);
+    setTimeout(() => setLinkCopied(false), 3000);
   };
 
   return (
     <div style={{maxWidth: '600px', margin: '0 auto', padding: '2rem', fontFamily: 'sans-serif'}}>
       <h1>Admin Panel 🎊</h1>
-      <p style={{color: '#666', marginBottom: '2rem'}}>Edit undangan tanpa ribet!</p>
+      <p style={{color: '#666', marginBottom: '2rem'}}>生成链接发给客人!</p>
 
       <div style={{background: '#f5f5f5', padding: '1.5rem', borderRadius: '8px', marginBottom: '2rem'}}>
         <h3>👨‍🦱 Data Mempelai</h3>
@@ -84,7 +80,7 @@ export default function Admin() {
       </div>
 
       <div style={{background: '#f5f5f5', padding: '1.5rem', borderRadius: '8px', marginBottom: '2rem'}}>
-        <h3>👥 Daftar Tamu</h3>
+        <h3>👥 Daftar Tamu ({data.guests.length})</h3>
         <div style={{display: 'flex', gap: '0.5rem'}}>
           <input type="text" placeholder="Nama tamu baru" value={newGuest} onChange={e => setNewGuest(e.target.value)} onKeyDown={e => e.key === 'Enter' && addGuest()} style={{flex: 1, padding: '0.75rem'}} />
           <button onClick={addGuest} style={btnStyle}>+ Tambah</button>
@@ -92,24 +88,21 @@ export default function Admin() {
         <ul style={{marginTop: '1rem', listStyle: 'none', padding: 0}}>
           {data.guests.map((guest, i) => (
             <li key={i} style={{display: 'flex', justifyContent: 'space-between', padding: '0.5rem', borderBottom: '1px solid #ddd'}}>
-              {guest}
+              <span>{guest}</span>
               <button onClick={() => removeGuest(i)} style={{color: 'red', border: 'none', background: 'none', cursor: 'pointer'}}>✕</button>
             </li>
           ))}
         </ul>
+        {data.guests.length > 0 && (
+          <button onClick={generateLinks} style={{...btnStyle, background: '#C9A86C', width: '100%', marginTop: '1rem'}}>
+            {linkCopied ? '✅ Link Undangan Sudah Copy!' : '🔗 Generate Link Undangan'}
+          </button>
+        )}
       </div>
 
-      <button onClick={handleSave} style={{...btnStyle, background: '#C9A86C', width: '100%', marginBottom: '1rem'}}>
-        {saved ? '✅ Tersimpan!' : '💾 Simpan'}
+      <button onClick={handleSave} style={{...btnStyle, background: '#333', color: '#fff', width: '100%'}}>
+        {saved ? '✅ Tersimpan!' : '💾 Simpan Data'}
       </button>
-
-      <button onClick={exportConfig} style={{...btnStyle, background: '#333', color: '#fff', width: '100%'}}>
-        📋 Export ke page.js
-      </button>
-
-      <p style={{marginTop: '2rem', color: '#999', fontSize: '0.8rem'}}>
-        Cara: 1. Edit data di atas 2. Klik Export 3. Paste di page.js
-      </p>
     </div>
   );
 }

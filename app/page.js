@@ -69,9 +69,15 @@ function Countdown({ targetDate }) {
 }
 
 export default function Home() {
+  const [guestName, setGuestName] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [wishes, setWishes] = useState([]);
   const [form, setForm] = useState({ name: '', message: '', presence: 'Hadir' });
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    setGuestName(params.get('to') || '');
+  }, []);
   
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -96,7 +102,7 @@ export default function Home() {
           <div className="cover-content">
             <h1>Wedding Invitation</h1>
             <p className="invitation-title">Undangan Pernikahan</p>
-            <p className="guest-message">Kepada Yth. Tamu Undangan</p>
+            <p className="guest-message">Kepada Yth. {guestName || 'Tamu Undangan'}</p>
             <button className="open-btn" onClick={openInvitation}>Buka Undangan</button>
           </div>
         </section>
