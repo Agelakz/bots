@@ -14,7 +14,7 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 500; }
 .ampersand { font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: var(--accent); }
 
 /* COVER - Banner 6 */
-.cover { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://i.ibb.co/5hMcXRjb/Cokelat-Putih-dan-Hitam-Minimalist-Pernikahan-Banner-6.png'); background-size: cover; background-position: center; }
+.cover { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('https://i.ibb.co/5hMcXRjb/Cokelat-Putih-dan-Hitam-Minimalist-Pernikahan-Banner-6.png'); background-size: cover; background-position: center; }
 .cover-content { padding: 2rem; }
 .cover h1 { font-size: 3.5rem; letter-spacing: 4px; margin: 0.5rem 0; text-transform: uppercase; }
 .cover .ampersand { font-size: 3rem; margin: 0.3rem 0; }
@@ -25,7 +25,7 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 500; }
 .open-btn:hover { background: var(--accent); color: var(--bg-dark); }
 
 /* COUNTDOWN - Banner 5 */
-.countdown-section { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 4rem 2rem; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://i.ibb.co/nVNv6tq/Cokelat-Putih-dan-Hitam-Minimalist-Pernikahan-Banner-5.png'); background-size: cover; background-position: center; }
+.countdown-section { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 4rem 2rem; background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://i.ibb.co/nVNv6tq/Cokelat-Putih-dan-Hitam-Minimalist-Pernikahan-Banner-5.png'); background-size: cover; background-position: center; }
 .countdown-title { font-size: 1rem; letter-spacing: 4px; margin-bottom: 1rem; }
 .countdown-date { font-size: 2rem; margin-bottom: 2rem; }
 .countdown { display: flex; justify-content: center; gap: 2rem; }
@@ -34,12 +34,12 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 500; }
 .countdown-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.8; }
 
 /* SALAM - Banner 4 */
-.salam-section { padding: 6rem 2rem; text-align: center; background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://i.ibb.co/93fFnKgf/Cokelat-Putih-dan-Hitam-Minimalist-Pernikahan-Banner-4.png'); background-size: cover; background-position: center; }
+.salam-section { padding: 6rem 2rem; text-align: center; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://i.ibb.co/93fFnKgf/Cokelat-Putih-dan-Hitam-Minimalist-Pernikahan-Banner-4.png'); background-size: cover; background-position: center; }
 .salam-section h2 { font-size: 2rem; margin-bottom: 1rem; }
 .salam-text { font-size: 1rem; color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto; line-height: 1.8; }
 
 /* COUPLE - Banner 3 */
-.couple-section { padding: 4rem 2rem; background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://i.ibb.co/PZrT1qMr/Cokelat-Putih-dan-Hitam-Minimalist-Pernikahan-Banner-3.png'); background-size: cover; background-position: center; }
+.couple-section { padding: 4rem 2rem; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://i.ibb.co/PZrT1qMr/Cokelat-Putih-dan-Hitam-Minimalist-Pernikahan-Banner-3.png'); background-size: cover; background-position: center; }
 .couple-section .container { display: flex; flex-direction: column; align-items: center; gap: 3rem; }
 .couple-card { text-align: center; }
 .couple-name { font-size: 2rem; margin-bottom: 0.5rem; }
@@ -47,7 +47,7 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 500; }
 .couple-section .ampersand { font-size: 3rem; margin: 1rem auto; display: block; }
 
 /* EVENTS - Banner 5 */
-.event-section { padding: 6rem 2rem; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://i.ibb.co/nVNv6tq/Cokelat-Putih-dan-Hitam-Minimalist-Pernikahan-Banner-5.png'); background-size: cover; background-position: center; }
+.event-section { padding: 6rem 2rem; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://i.ibb.co/nVNv6tq/Cokelat-Putih-dan-Hitam-Minimalist-Pernikahan-Banner-5.png'); background-size: cover; background-position: center; }
 .section-title { text-align: center; font-size: 2rem; margin-bottom: 3rem; }
 .event-card { text-align: center; padding: 2rem; }
 .event-card h3 { font-size: 1.5rem; margin-bottom: 1rem; }
@@ -56,7 +56,7 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 500; }
 .event-card .location { font-size: 0.9rem; opacity: 0.7; }
 
 /* WISHES - Banner 6 */
-.wishes-section { padding: 6rem 2rem; background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://i.ibb.co/5hMcXRjb/Cokelat-Putih-dan-Hitam-Minimalist-Pernikahan-Banner-6.png'); background-size: cover; background-position: center; }
+.wishes-section { padding: 6rem 2rem; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://i.ibb.co/5hMcXRjb/Cokelat-Putih-dan-Hitam-Minimalist-Pernikahan-Banner-6.png'); background-size: cover; background-position: center; }
 .wishes-form { max-width: 500px; margin: 0 auto; }
 .form-group { margin-bottom: 1.5rem; }
 .form-group label { display: block; font-size: 0.85rem; margin-bottom: 0.5rem; letter-spacing: 1px; text-transform: uppercase; }
