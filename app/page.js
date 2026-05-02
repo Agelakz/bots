@@ -2,6 +2,15 @@
 
 import { useState, useEffect, useRef } from 'react'
 
+// Asset URLs dari contoh website (Supabase)
+const ASSETS = {
+  background: 'https://nfzhmngwwjsnxzsgrlfg.supabase.co/storage/v1/object/public/assets/background/',
+  backgroundLight: 'https://nfzhmngwwjsnxzsgrlfg.supabase.co/storage/v1/object/public/assets/backgroundOxiVmJ3h-J0wcD0WwYpit.jpg',
+  bgDark: 'https://nfzhmngwwjsnxzsgrlfg.supabase.co/storage/v1/object/public/assets/backgroundxg4aHnzEqUhKuWCkRHcxl.jpg',
+  shapes: 'https://nfzhmngwwjsnxzsgrlfg.supabase.co/storage/v1/object/public/assets/shapesQ_GHJ7KbL2OYdXbx8-Z4H.png',
+  frame: 'https://nfzhmngwwjsnxzsgrlfg.supabase.co/storage/v1/object/public/assets/frameDca1PYBDWcezJ1wo3Nemr.png',
+}
+
 // Wedding Data - Edit di sini ya!
 const WEDDING_DATA = {
   groom: {
@@ -18,14 +27,7 @@ const WEDDING_DATA = {
   },
   date: '2026-05-14',
   day: 'Kamis',
-  time: '10:15',
-  // Musik bisa diambil dari URL MP3 atau kosongkan kalau tidak ada
   music: '', 
-  venue: {
-    name: 'Jl. DR Sutomo RT 12 No 22',
-    city: 'Karang Rejo, Balikpapan Tengah',
-    mapUrl: 'https://maps.app.goo.gl/example'
-  },
   events: [
     {
       title: 'Akad',
