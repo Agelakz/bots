@@ -4,13 +4,13 @@ import { useState, useEffect } from 'react';
 
 const WEDDING_DATA = {
   groom: {
-    name: 'Muhammad Bayu Ramadhan',
+    name: 'Bayu Ramadhan',
     father: 'Bapak Suroso',
     mother: 'Ibu Tri Sayekti',
     image: 'https://res.cloudinary.com/dhkwhynff/image/upload/v1777706117/Pngtree_indonesian_wedding_couple_wear_white_6431502_ztq8dh.png'
   },
   bride: {
-    name: 'Mutyara Nurhifa Orvalla Putri',
+    name: 'Tyara Nurhifa',
     father: 'Bapak Henry Irwansyah',
     mother: 'Ibu Fitria Andjani',
     image: 'https://res.cloudinary.com/dhkwhynff/image/upload/v1777706117/Pngtree_indonesian_wedding_couple_wear_white_6431502_ztq8dh.png'
