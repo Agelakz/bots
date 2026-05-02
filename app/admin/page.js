@@ -87,9 +87,10 @@ export default function Admin() {
         </div>
         <ul style={{marginTop: '1rem', listStyle: 'none', padding: 0}}>
           {data.guests.map((guest, i) => (
-            <li key={i} style={{display: 'flex', justifyContent: 'space-between', padding: '0.5rem', borderBottom: '1px solid #ddd'}}>
-              <span>{guest}</span>
-              <button onClick={() => removeGuest(i)} style={{color: 'red', border: 'none', background: 'none', cursor: 'pointer'}}>✕</button>
+            <li key={i} style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0.5rem', borderBottom: '1px solid #ddd', gap: '0.5rem'}}>
+              <span style={{flex: 1}}>{guest}</span>
+              <button onClick={() => { navigator.clipboard.writeText(`${window.location.origin.replace('/admin', '')}/?to=${encodeURIComponent(guest)}`); }} style={{padding: '0.4rem 0.6rem', fontSize: '0.75rem', background: '#C9A86C', border: 'none', borderRadius: '4px', cursor: 'pointer', whiteSpace: 'nowrap'}}>📋 Copy</button>
+              <button onClick={() => removeGuest(i)} style={{color: 'red', border: 'none', background: 'none', cursor: 'pointer', padding: '0.4rem'}}>✕</button>
             </li>
           ))}
         </ul>
