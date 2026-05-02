@@ -7,26 +7,26 @@ const WEDDING_DATA = {
     name: 'Muhammad Bayu Ramadhan',
     father: 'Bapak Suroso',
     mother: 'Ibu Tri Sayekti',
-    image: 'https://i.ibb.co/KjqVZL10/Pngtree-indonesian-wedding-couple-wear-white-6431502.png'
+    image: 'https://res.cloudinary.com/dhkwhynff/image/upload/v1777706117/Pngtree_indonesian_wedding_couple_wear_white_6431502_ztq8dh.png'
   },
   bride: {
     name: 'Mutyara Nurhifa Orvalla Putri',
     father: 'Bapak Henry Irwansson',
     mother: 'Ibu Fitria Andjani',
-    image: 'https://i.ibb.co/KjqVZL10/Pngtree-indonesian-wedding-couple-wear-white-6431502.png'
+    image: 'https://res.cloudinary.com/dhkwhynff/image/upload/v1777706117/Pngtree_indonesian_wedding_couple_wear_white_6431502_ztq8dh.png'
   },
   date: '2026-05-14',
   day: 'Kamis',
   music: '',
   events: [
     {
-      name: 'Akad Nikah',
+      name: 'AKAD NIKAH',
       date: 'Kamis, 14 Mei 2026',
       time: '08.00 - 10.00 WIB',
       location: 'Masjid Al-Munawwir'
     },
     {
-      name: 'Resepsi',
+      name: 'RESEPSI',
       date: 'Kamis, 14 Mei 2026',
       time: '11.00 - 14.00 WIB',
       location: 'Gedung Pertemuan'
@@ -55,19 +55,19 @@ function Countdown({ targetDate }) {
   return (
     <div className="countdown">
       <div className="countdown-item">
-        <span className="countdown-number">{timeLeft.days}</span>
+        <span className="countdown-number">{String(timeLeft.days).padStart(2, '0')}</span>
         <span className="countdown-label">Hari</span>
       </div>
       <div className="countdown-item">
-        <span className="countdown-number">{timeLeft.hours}</span>
+        <span className="countdown-number">{String(timeLeft.hours).padStart(2, '0')}</span>
         <span className="countdown-label">Jam</span>
       </div>
       <div className="countdown-item">
-        <span className="countdown-number">{timeLeft.minutes}</span>
+        <span className="countdown-number">{String(timeLeft.minutes).padStart(2, '0')}</span>
         <span className="countdown-label">Menit</span>
       </div>
       <div className="countdown-item">
-        <span className="countdown-number">{timeLeft.seconds}</span>
+        <span className="countdown-number">{String(timeLeft.seconds).padStart(2, '0')}</span>
         <span className="countdown-label">Detik</span>
       </div>
     </div>
@@ -77,13 +77,13 @@ function Countdown({ targetDate }) {
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
   const [wishes, setWishes] = useState([]);
-  const [form, setForm] = useState({ name: '', message: '', presence: 'hadir' });
+  const [form, setForm] = useState({ name: '', message: '', presence: 'Hadir' });
   
   const handleSubmit = (e) => {
     e.preventDefault();
     if (form.name && form.message) {
       setWishes([...wishes, form]);
-      setForm({ name: '', message: '', presence: 'hadir' });
+      setForm({ name: '', message: '', presence: 'Hadir' });
     }
   };
 
@@ -113,9 +113,9 @@ export default function Home() {
           <section className="cover">
             <div className="cover-content">
               <p className="invitation-title">Undangan Pernikahan</p>
-              <h1>{WEDDING_DATA.groom.name.split(' ').pop()}</h1>
+              <h1>{WEDDING_DATA.groom.name.split(' ').slice(0,2).join(' ')}</h1>
               <span className="ampersand">&</span>
-              <h1 className="names">{WEDDING_DATA.bride.name.split(' ').pop()}</h1>
+              <h1 className="names">{WEDDING_DATA.bride.name.split(' ').slice(0,2).join(' ')}</h1>
               <p className="guest-message">{WEDDING_DATA.day}, {new Date(WEDDING_DATA.date).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
             </div>
           </section>
@@ -134,13 +134,13 @@ export default function Home() {
           <section className="couple-section">
             <div className="container">
               <div className="couple-card">
-                <img src={WEDDING_DATA.groom.image} alt={WEDDING_DATA.groom.name} style={{width: '150px', height: '150px', borderRadius: '50%', objectFit: 'cover', marginBottom: '1rem'}} />
+                <img src={WEDDING_DATA.groom.image} alt={WEDDING_DATA.groom.name} className="couple-img" />
                 <h3 className="couple-name">{WEDDING_DATA.groom.name}</h3>
                 <p className="couple-parents">Putra dari {WEDDING_DATA.groom.father} & {WEDDING_DATA.groom.mother}</p>
               </div>
               <span className="ampersand">&</span>
               <div className="couple-card">
-                <img src={WEDDING_DATA.bride.image} alt={WEDDING_DATA.bride.name} style={{width: '150px', height: '150px', borderRadius: '50%', objectFit: 'cover', marginBottom: '1rem'}} />
+                <img src={WEDDING_DATA.bride.image} alt={WEDDING_DATA.bride.name} className="couple-img" />
                 <h3 className="couple-name">{WEDDING_DATA.bride.name}</h3>
                 <p className="couple-parents">Putri dari {WEDDING_DATA.bride.father} & {WEDDING_DATA.bride.mother}</p>
               </div>
@@ -149,7 +149,7 @@ export default function Home() {
 
           <section className="event-section">
             <h2 className="section-title">Jadwal Acara</h2>
-            <div className="container">
+            <div className="events-grid">
               {WEDDING_DATA.events.map((event, i) => (
                 <div key={i} className="event-card">
                   <h3>{event.name}</h3>
@@ -175,19 +175,19 @@ export default function Home() {
               <div className="form-group">
                 <label>Kehadiran</label>
                 <select value={form.presence} onChange={(e) => setForm({...form, presence: e.target.value})}>
-                  <option value="hadir">Hadir</option>
-                  <option value="tidak">Tidak Hadir</option>
-                  <option value="ragu">Ragu-ragu</option>
+                  <option value="Hadir">Hadir</option>
+                  <option value="Tidak Hadir">Tidak Hadir</option>
+                  <option value="Ragu">Ragu-ragu</option>
                 </select>
               </div>
               <button type="submit" className="submit-btn">Kirim</button>
             </form>
             {wishes.length > 0 && (
-              <div style={{marginTop: '2rem', textAlign: 'left'}}>
+              <div style={{marginTop: '2rem'}}>
                 {wishes.map((w, i) => (
-                  <div key={i} style={{padding: '1rem', marginBottom: '1rem', border: '1px solid rgba(255,255,255,0.2)'}}>
+                  <div key={i} style={{padding: '1rem', marginBottom: '1rem', background: '#fff', borderRadius: '8px'}}>
                     <strong>{w.name}</strong> ({w.presence})
-                    <p>{w.message}</p>
+                    <p style={{marginTop: '0.5rem'}}>{w.message}</p>
                   </div>
                 ))}
               </div>

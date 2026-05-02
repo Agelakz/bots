@@ -1,81 +1,93 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap');
 
 :root {
-  --accent: #D4AF37;
-  --bg-dark: #0a0a0a;
+  --primary: #C9A86C;
+  --secondary: #E8D5B7;
+  --bg-cream: #FDF8F3;
+  --bg-light: #F5EFE6;
+  --text-dark: #2C2C2C;
   --white: #fff;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { font-family: 'Montserrat', sans-serif; background: var(--bg-dark); color: var(--white); min-height: 100vh; }
+body { font-family: 'Montserrat', sans-serif; background: var(--bg-cream); color: var(--text-dark); min-height: 100vh; }
 h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 500; }
 .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-.ampersand { font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: var(--accent); }
+.ampersand { font-family: 'Great Vibes', cursive; font-size: 3rem; color: var(--primary); }
 
-/* COVER - Banner 6 */
-.cover { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('https://i.ibb.co/5hMcXRjb/Cokelat-Putih-dan-Hitam-Minimalist-Pernikahan-Banner-6.png'); background-size: cover; background-position: center; }
-.cover-content { padding: 2rem; }
-.cover h1 { font-size: 3.5rem; letter-spacing: 4px; margin: 0.5rem 0; text-transform: uppercase; }
-.cover .ampersand { font-size: 3rem; margin: 0.3rem 0; }
-.cover .names { font-size: 2.5rem; letter-spacing: 3px; }
-.invitation-title { font-size: 0.85rem; letter-spacing: 5px; text-transform: uppercase; color: var(--accent); margin-top: 3rem; }
-.guest-message { font-size: 1rem; margin-top: 3rem; }
-.open-btn { display: inline-block; padding: 1rem 3rem; margin-top: 2rem; background: transparent; color: var(--white); font-size: 0.9rem; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.5); cursor: pointer; }
-.open-btn:hover { background: var(--accent); color: var(--bg-dark); }
+/* COVER */
+.cover { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: url('https://res.cloudinary.com/dhkwhynff/image/upload/v1777706134/Pink_Beige_Illustrative_Romantic_Floral_Wedding_Banner_bwya9y.png'); background-size: cover; background-position: center; }
+.cover::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255,248,243,0.85); }
+.cover-content { position: relative; z-index: 1; padding: 2rem; }
+.cover h1 { font-size: 3rem; letter-spacing: 3px; margin: 0.5rem 0; text-transform: uppercase; }
+.cover .names { font-size: 2.2rem; letter-spacing: 2px; }
+.invitation-title { font-size: 0.8rem; letter-spacing: 4px; text-transform: uppercase; color: var(--primary); margin-top: 2rem; }
+.guest-message { font-size: 0.9rem; margin-top: 2rem; opacity: 0.8; }
+.open-btn { display: inline-block; padding: 0.9rem 2.5rem; margin-top: 1.5rem; background: var(--primary); color: var(--white); font-size: 0.85rem; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; border: none; cursor: pointer; border-radius: 2px; }
+.open-btn:hover { background: #B8956A; }
 
-/* COUNTDOWN - Banner 5 */
-.countdown-section { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 4rem 2rem; background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://i.ibb.co/nVNv6tq/Cokelat-Putih-dan-Hitam-Minimalist-Pernikahan-Banner-5.png'); background-size: cover; background-position: center; }
-.countdown-title { font-size: 1rem; letter-spacing: 4px; margin-bottom: 1rem; }
-.countdown-date { font-size: 2rem; margin-bottom: 2rem; }
+/* COUNTDOWN */
+.countdown-section { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 4rem 2rem; background: var(--bg-cream); }
+.countdown-title { font-size: 0.85rem; letter-spacing: 3px; margin-bottom: 1rem; text-transform: uppercase; color: var(--primary); }
+.countdown-date { font-size: 1.6rem; margin-bottom: 2rem; }
 .countdown { display: flex; justify-content: center; gap: 2rem; }
 .countdown-item { text-align: center; }
-.countdown-number { font-size: 3rem; font-family: 'Cormorant Garamond', serif; font-weight: 600; display: block; }
-.countdown-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.8; }
+.countdown-number { font-size: 2.5rem; font-family: 'Cormorant Garamond', serif; font-weight: 600; display: block; color: var(--primary); }
+.countdown-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.7; }
 
-/* SALAM - Banner 4 */
-.salam-section { padding: 6rem 2rem; text-align: center; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://i.ibb.co/93fFnKgf/Cokelat-Putih-dan-Hitam-Minimalist-Pernikahan-Banner-4.png'); background-size: cover; background-position: center; }
-.salam-section h2 { font-size: 2rem; margin-bottom: 1rem; }
-.salam-text { font-size: 1rem; color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto; line-height: 1.8; }
+/* SALAM */
+.salam-section { padding: 5rem 2rem; text-align: center; background: var(--bg-light); }
+.salam-section h2 { font-size: 1.8rem; margin-bottom: 1rem; }
+.salam-text { font-size: 0.95rem; color: #555; max-width: 550px; margin: 0 auto; line-height: 1.8; }
 
-/* COUPLE - Banner 3 */
-.couple-section { padding: 4rem 2rem; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://i.ibb.co/PZrT1qMr/Cokelat-Putih-dan-Hitam-Minimalist-Pernikahan-Banner-3.png'); background-size: cover; background-position: center; }
-.couple-section .container { display: flex; flex-direction: column; align-items: center; gap: 3rem; }
+/* COUPLE */
+.couple-section { padding: 4rem 2rem; background: var(--bg-cream); text-align: center; }
+.couple-section .container { display: flex; flex-direction: column; align-items: center; gap: 2.5rem; }
 .couple-card { text-align: center; }
-.couple-name { font-size: 2rem; margin-bottom: 0.5rem; }
-.couple-parents { font-size: 0.9rem; opacity: 0.7; }
-.couple-section .ampersand { font-size: 3rem; margin: 1rem auto; display: block; }
+.couple-name { font-size: 1.8rem; margin-bottom: 0.5rem; }
+.couple-parents { font-size: 0.85rem; opacity: 0.7; }
+.couple-img { width: 130px; height: 130px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary); margin-bottom: 1rem; }
+.couple-section .ampersand { font-size: 2.5rem; margin: 0.5rem auto; display: block; }
 
-/* EVENTS - Banner 5 */
-.event-section { padding: 6rem 2rem; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://i.ibb.co/nVNv6tq/Cokelat-Putih-dan-Hitam-Minimalist-Pernikahan-Banner-5.png'); background-size: cover; background-position: center; }
-.section-title { text-align: center; font-size: 2rem; margin-bottom: 3rem; }
-.event-card { text-align: center; padding: 2rem; }
-.event-card h3 { font-size: 1.5rem; margin-bottom: 1rem; }
-.event-card .date { font-size: 1.1rem; font-weight: 500; margin-bottom: 0.5rem; }
-.event-card .time { font-size: 0.95rem; opacity: 0.8; margin-bottom: 0.5rem; }
-.event-card .location { font-size: 0.9rem; opacity: 0.7; }
+/* EVENTS */
+.event-section { padding: 5rem 2rem; background: var(--bg-light); }
+.section-title { text-align: center; font-size: 1.6rem; margin-bottom: 2.5rem; color: var(--primary); }
+.events-grid { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
+.event-card { text-align: center; padding: 2rem 3rem; background: var(--white); border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); max-width: 320px; }
+.event-card h3 { font-size: 1.3rem; margin-bottom: 0.8rem; color: var(--primary); }
+.event-card .date { font-size: 1rem; font-weight: 500; margin-bottom: 0.4rem; }
+.event-card .time { font-size: 0.9rem; opacity: 0.75; margin-bottom: 0.4rem; }
+.event-card .location { font-size: 0.85rem; opacity: 0.65; }
 
-/* WISHES - Banner 6 */
-.wishes-section { padding: 6rem 2rem; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://i.ibb.co/5hMcXRjb/Cokelat-Putih-dan-Hitam-Minimalist-Pernikahan-Banner-6.png'); background-size: cover; background-position: center; }
-.wishes-form { max-width: 500px; margin: 0 auto; }
-.form-group { margin-bottom: 1.5rem; }
-.form-group label { display: block; font-size: 0.85rem; margin-bottom: 0.5rem; letter-spacing: 1px; text-transform: uppercase; }
-.form-group input, .form-group textarea, .form-group select { width: 100%; padding: 0.8rem 1rem; border: 1px solid rgba(255,255,255,0.2); background: transparent; color: var(--white); font-size: 1rem; font-family: 'Montserrat', sans-serif; border-radius: 0; }
-.form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--accent); }
-.form-group textarea { min-height: 100px; resize: vertical; }
-.submit-btn { width: 100%; padding: 1rem; background: var(--accent); color: var(--bg-dark); border: none; font-size: 0.9rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; }
+/* WISHES */
+.wishes-section { padding: 5rem 2rem; background: var(--bg-cream); }
+.wishes-section .section-title { text-align: center; font-size: 1.6rem; margin-bottom: 2rem; color: var(--primary); }
+.wishes-form { max-width: 480px; margin: 0 auto; }
+.form-group { margin-bottom: 1.2rem; }
+.form-group label { display: block; font-size: 0.8rem; margin-bottom: 0.4rem; letter-spacing: 1px; text-transform: uppercase; }
+.form-group input, .form-group textarea, .form-group select { width: 100%; padding: 0.75rem 0.9rem; border: 1px solid #DDD; background: var(--white); color: var(--text-dark); font-size: 0.95rem; font-family: 'Montserrat', sans-serif; border-radius: 4px; }
+.form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--primary); }
+.form-group textarea { min-height: 90px; resize: vertical; }
+.submit-btn { width: 100%; padding: 0.9rem; background: var(--primary); color: var(--white); border: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; }
 
 /* CLOSING */
-.closing-section { padding: 6rem 2rem; text-align: center; background: var(--bg-dark); }
-.closing-section h2 { font-size: 2.5rem; margin-bottom: 1rem; }
-.closing-text { font-size: 1rem; color: rgba(255,255,255,0.7); max-width: 500px; margin: 0 auto; line-height: 1.8; }
+.closing-section { padding: 5rem 2rem; text-align: center; background: var(--bg-light); }
+.closing-section h2 { font-size: 2rem; margin-bottom: 0.8rem; }
+.closing-text { font-size: 0.95rem; color: #666; max-width: 450px; margin: 0 auto; line-height: 1.7; }
 
 /* FOOTER */
-footer { padding: 3rem 0; text-align: center; background: var(--bg-dark); color: rgba(255,255,255,0.5); font-size: 0.8rem; }
+footer { padding: 2.5rem 0; text-align: center; background: var(--bg-cream); color: #999; font-size: 0.75rem; }
 
 /* RESPONSIVE */
-@media (max-width: 768px) { .cover h1 { font-size: 2.5rem; } .cover .ampersand { font-size: 2rem; } .cover .names { font-size: 1.8rem; } .countdown-number { font-size: 2rem; } .countdown { gap: 1.5rem; } }
+@media (max-width: 768px) {
+  .cover h1 { font-size: 2rem; }
+  .cover .names { font-size: 1.6rem; }
+  .countdown-number { font-size: 1.8rem; }
+  .countdown { gap: 1.2rem; }
+  .events-grid { flex-direction: column; align-items: center; }
+}
 
 /* ANIMATION */
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-.cover-content { animation: fadeIn 1s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.cover-content { animation: fadeIn 0.8s ease; }
