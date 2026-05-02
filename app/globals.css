@@ -40,7 +40,7 @@ h1, h2, h3 {
   color: var(--accent);
 }
 
-/* COVER - Purple flower elegant */
+/* COVER - From user's assets */
 .cover {
   min-height: 100vh;
   display: flex;
@@ -48,8 +48,8 @@ h1, h2, h3 {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-    url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1920&q=80');
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+    url('https://res.cloudinary.com/dhkwhynff/image/upload/v1777706134/Pink_Beige_Illustrative_Romantic_Floral_Wedding_Banner_bwya9y.png');
   background-size: cover;
   background-position: center;
 }
@@ -107,7 +107,7 @@ h1, h2, h3 {
   color: var(--bg-dark);
 }
 
-/* COUNTDOWN - Dark floral */
+/* COUNTDOWN - User assets */
 .countdown-section {
   min-height: 100vh;
   display: flex;
@@ -116,8 +116,8 @@ h1, h2, h3 {
   align-items: center;
   text-align: center;
   padding: 4rem 2rem;
-  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-    url('https://images.unsplash.com/photo-1508615039629-2560e540b88c?w=1920&q=80');
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+    url('https://res.cloudinary.com/dhkwhynff/image/upload/v1777706134/Pink_Beige_Illustrative_Romantic_Floral_Wedding_Banner_bwya9y.png');
   background-size: cover;
   background-position: center;
 }
@@ -157,12 +157,12 @@ h1, h2, h3 {
   opacity: 0.8;
 }
 
-/* SALAM - Dark elegant */
+/* SALAM - User assets */
 .salam-section {
   padding: 6rem 2rem;
   text-align: center;
-  background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)),
-    url('https://images.unsplash.com/photo-1495285114864-7420062d3cc4?w=1920&q=80');
+  background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
+    url('https://res.cloudinary.com/dhkwhynff/image/upload/v1777706134/Pink_Beige_Illustrative_Romantic_Floral_Wedding_Banner_bwya9y.png');
   background-size: cover;
   background-position: center;
 }
@@ -180,11 +180,11 @@ h1, h2, h3 {
   line-height: 1.8;
 }
 
-/* COUPLE - Elegant dark */
+/* COUPLE - From user assets */
 .couple-section {
   padding: 4rem 2rem;
   background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),
-    url('https://images.unsplash.com/photo-1495285114864-7420062d3cc4?w=1920&q=80');
+    url('https://res.cloudinary.com/dhkwhynff/image/upload/v1777706117/Pngtree_indonesian_wedding_couple_wear_white_6431502_ztq8dh.png');
   background-size: cover;
   background-position: center;
 }
@@ -216,11 +216,11 @@ h1, h2, h3 {
   margin: 1rem auto;
 }
 
-/* EVENTS - Purple elegant */
+/* EVENTS - User assets */
 .event-section {
   padding: 6rem 2rem;
   background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
-    url('https://images.unsplash.com/photo-1522758971460-1d21b7f76e90?w=1920&q=80');
+    url('https://res.cloudinary.com/dhkwhynff/image/upload/v1777706134/Pink_Beige_Illustrative_Romantic_Floral_Wedding_Banner_bwya9y.png');
   background-size: cover;
   background-position: center;
 }
@@ -258,11 +258,11 @@ h1, h2, h3 {
   opacity: 0.7;
 }
 
-/* WISHES - Dark elegant */
+/* WISHES - User assets */
 .wishes-section {
   padding: 6rem 2rem;
   background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
-    url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1920&q=80');
+    url('https://res.cloudinary.com/dhkwhynff/image/upload/v1777706134/Pink_Beige_Illustrative_Romantic_Floral_Wedding_Banner_bwya9y.png');
   background-size: cover;
   background-position: center;
 }
