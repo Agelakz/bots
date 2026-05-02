@@ -1,20 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap');
+
+:root {
+  --accent: #D4AF37;
+  --bg-dark: #0a0a0a;
+  --white: #fff;
+}
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-:root {
-  --primary: #8B7355;
-  --secondary: #A0926B;
-  --accent: #D4AF37;
-  --bg-dark: #0a0a0a;
-  --bg-light: #f8f5f0;
-  --text-dark: #2c2c2c;
-  --text-light: #5a5a5a;
-  --white: #fff;
 }
 
 html {
@@ -23,21 +18,14 @@ html {
 
 body {
   font-family: 'Montserrat', sans-serif;
-  background: #0a0a0a;
+  background: var(--bg-dark);
   color: var(--white);
-  overflow-x: hidden;
   min-height: 100vh;
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3 {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 500;
-}
-
-.ampersand {
-  font-family: 'Great Vibes', cursive;
-  font-size: 2.5rem;
-  color: var(--accent);
 }
 
 .container {
@@ -46,7 +34,13 @@ h1, h2, h3, h4 {
   padding: 0 20px;
 }
 
-/* Cover Section - Same as Example */
+.ampersand {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.5rem;
+  color: var(--accent);
+}
+
+/* COVER - Full background image from Unsplash */
 .cover {
   min-height: 100vh;
   display: flex;
@@ -55,51 +49,17 @@ h1, h2, h3, h4 {
   align-items: center;
   text-align: center;
   background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-    url('https://nfzhmngwwjsnxzsgrlfg.supabase.co/storage/v1/object/public/assets/backgroundxg4aHnzEqUhKuWCkRHcxl.jpg');
+    url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&q=80');
   background-size: cover;
   background-position: center;
-  position: relative;
-}
-
-.cover::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url('https://nfzhmngwwjsnxzsgrlfg.supabase.co/storage/v1/object/public/assets/shapesQ_GHJ7KbL2OYdXbx8-Z4H.png');
-  background-size: 100% auto;
-  background-position: center;
-  background-repeat: no-repeat;
-  pointer-events: none;
 }
 
 .cover-content {
-  position: relative;
-  z-index: 2;
   padding: 2rem;
-}
-
-.frame-overlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 90%;
-  max-width: 500px;
-  aspect-ratio: 1/1.4;
-  background-image: url('https://nfzhmngwwjsnxzsgrlfg.supabase.co/storage/v1/object/public/assets/frameDca1PYBDWcezJ1wo3Nemr.png');
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  pointer-events: none;
-  z-index: 1;
 }
 
 .cover h1 {
   font-size: 3.5rem;
-  font-weight: 500;
   letter-spacing: 4px;
   margin: 0.5rem 0;
   text-transform: uppercase;
@@ -107,13 +67,11 @@ h1, h2, h3, h4 {
 
 .cover .ampersand {
   font-size: 3rem;
-  display: block;
   margin: 0.3rem 0;
 }
 
 .cover .names {
   font-size: 2.5rem;
-  font-family: 'Cormorant Garamond', serif;
   letter-spacing: 3px;
 }
 
@@ -122,12 +80,11 @@ h1, h2, h3, h4 {
   letter-spacing: 5px;
   text-transform: uppercase;
   color: var(--accent);
-  margin-bottom: 3rem;
+  margin-top: 3rem;
 }
 
 .guest-message {
   font-size: 1rem;
-  color: rgba(255,255,255,0.9);
   margin-top: 3rem;
 }
 
@@ -137,23 +94,20 @@ h1, h2, h3, h4 {
   margin-top: 2rem;
   background: transparent;
   color: var(--white);
-  text-decoration: none;
   font-size: 0.9rem;
   font-weight: 500;
   letter-spacing: 3px;
   text-transform: uppercase;
   border: 1px solid rgba(255,255,255,0.5);
-  transition: all 0.3s ease;
   cursor: pointer;
 }
 
 .open-btn:hover {
   background: var(--accent);
   color: var(--bg-dark);
-  border-color: var(--accent);
 }
 
-/* Countdown Section */
+/* COUNTDOWN */
 .countdown-section {
   min-height: 100vh;
   display: flex;
@@ -163,37 +117,19 @@ h1, h2, h3, h4 {
   text-align: center;
   padding: 4rem 2rem;
   background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-    url('https://nfzhmngwwjsnxzsgrlfg.supabase.co/storage/v1/object/public/assets/backgroundOxiVmJ3h-J0wcD0WwYpit.jpg');
+    url('https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1920&q=80');
   background-size: cover;
   background-position: center;
-  color: var(--white);
-  position: relative;
-}
-
-.countdown-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url('https://nfzhmngwwjsnxzsgrlfg.supabase.co/storage/v1/object/public/assets/shapesQ_GHJ7KbL2OYdXbx8-Z4H.png');
-  background-size: 100% auto;
-  background-position: center;
-  background-repeat: no-repeat;
-  pointer-events: none;
 }
 
 .countdown-title {
   font-size: 1rem;
   letter-spacing: 4px;
   margin-bottom: 1rem;
-  font-family: 'Montserrat', sans-serif;
 }
 
 .countdown-date {
   font-size: 2rem;
-  font-family: 'Cormorant Garamond', serif;
   margin-bottom: 2rem;
 }
 
@@ -201,9 +137,6 @@ h1, h2, h3, h4 {
   display: flex;
   justify-content: center;
   gap: 2rem;
-  flex-wrap: wrap;
-  position: relative;
-  z-index: 2;
 }
 
 .countdown-item {
@@ -215,7 +148,6 @@ h1, h2, h3, h4 {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 600;
   display: block;
-  line-height: 1;
 }
 
 .countdown-label {
@@ -225,7 +157,7 @@ h1, h2, h3, h4 {
   opacity: 0.8;
 }
 
-/* Salam Section */
+/* SALAM */
 .salam-section {
   padding: 6rem 2rem;
   text-align: center;
@@ -234,9 +166,7 @@ h1, h2, h3, h4 {
 
 .salam-section h2 {
   font-size: 2rem;
-  font-family: 'Cormorant Garamond', serif;
   margin-bottom: 1rem;
-  color: var(--white);
 }
 
 .salam-text {
@@ -247,11 +177,10 @@ h1, h2, h3, h4 {
   line-height: 1.8;
 }
 
-/* Couple Section */
+/* COUPLE */
 .couple-section {
   padding: 4rem 2rem;
   background: var(--bg-dark);
-  color: var(--white);
 }
 
 .couple-section .container {
@@ -263,12 +192,10 @@ h1, h2, h3, h4 {
 
 .couple-card {
   text-align: center;
-  position: relative;
 }
 
 .couple-name {
   font-size: 2rem;
-  font-family: 'Cormorant Garamond', serif;
   margin-bottom: 0.5rem;
 }
 
@@ -283,11 +210,11 @@ h1, h2, h3, h4 {
   margin: 1rem auto;
 }
 
-/* Event Section */
+/* EVENTS */
 .event-section {
   padding: 6rem 2rem;
   background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
-    url('https://nfzhmngwwjsnxzsgrlfg.supabase.co/storage/v1/object/public/assets/backgroundOxiVmJ3h-J0wcD0WwYpit.jpg');
+    url('https://images.unsplash.com/photo-1511285560982-1351cdeb9821?w=1920&q=80');
   background-size: cover;
   background-position: center;
 }
@@ -295,9 +222,7 @@ h1, h2, h3, h4 {
 .section-title {
   text-align: center;
   font-size: 2rem;
-  font-family: 'Cormorant Garamond', serif;
   margin-bottom: 3rem;
-  color: var(--white);
 }
 
 .event-card {
@@ -327,11 +252,10 @@ h1, h2, h3, h4 {
   opacity: 0.7;
 }
 
-/* Wishes Section */
+/* WISHES */
 .wishes-section {
   padding: 6rem 2rem;
   background: var(--bg-dark);
-  color: var(--white);
 }
 
 .wishes-form {
@@ -365,8 +289,7 @@ h1, h2, h3, h4 {
 }
 
 .form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus {
+.form-group textarea:focus {
   outline: none;
   border-color: var(--accent);
 }
@@ -389,21 +312,15 @@ h1, h2, h3, h4 {
   cursor: pointer;
 }
 
-.submit-btn:hover {
-  opacity: 0.9;
-}
-
-/* Closing Section */
+/* CLOSING */
 .closing-section {
   padding: 6rem 2rem;
   text-align: center;
   background: var(--bg-dark);
-  color: var(--white);
 }
 
 .closing-section h2 {
   font-size: 2.5rem;
-  font-family: 'Cormorant Garamond', serif;
   margin-bottom: 1rem;
 }
 
@@ -415,7 +332,7 @@ h1, h2, h3, h4 {
   line-height: 1.8;
 }
 
-/* Footer */
+/* FOOTER */
 footer {
   padding: 3rem 0;
   text-align: center;
@@ -424,45 +341,26 @@ footer {
   font-size: 0.8rem;
 }
 
-footer .made-with {
-  margin-bottom: 1rem;
-}
-
-footer nav a {
-  color: rgba(255,255,255,0.5);
-  text-decoration: none;
-  margin: 0 1rem;
-  font-size: 0.85rem;
-}
-
-/* Responsive */
+/* RESPONSIVE */
 @media (max-width: 768px) {
   .cover h1 {
     font-size: 2.5rem;
   }
-  
   .cover .ampersand {
     font-size: 2rem;
   }
-  
   .cover .names {
     font-size: 1.8rem;
   }
-  
   .countdown-number {
     font-size: 2rem;
   }
-  
   .countdown {
     gap: 1.5rem;
   }
-  
-  .couple-section .container {
-    gap: 2rem;
-  }
 }
 
-/* Animations */
+/* ANIMATION */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }

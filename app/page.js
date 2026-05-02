@@ -2,15 +2,6 @@
 
 import { useState, useEffect, useRef } from 'react'
 
-// Asset URLs dari contoh website (Supabase)
-const ASSETS = {
-  background: 'https://nfzhmngwwjsnxzsgrlfg.supabase.co/storage/v1/object/public/assets/background/',
-  backgroundLight: 'https://nfzhmngwwjsnxzsgrlfg.supabase.co/storage/v1/object/public/assets/backgroundOxiVmJ3h-J0wcD0WwYpit.jpg',
-  bgDark: 'https://nfzhmngwwjsnxzsgrlfg.supabase.co/storage/v1/object/public/assets/backgroundxg4aHnzEqUhKuWCkRHcxl.jpg',
-  shapes: 'https://nfzhmngwwjsnxzsgrlfg.supabase.co/storage/v1/object/public/assets/shapesQ_GHJ7KbL2OYdXbx8-Z4H.png',
-  frame: 'https://nfzhmngwwjsnxzsgrlfg.supabase.co/storage/v1/object/public/assets/frameDca1PYBDWcezJ1wo3Nemr.png',
-}
-
 // Wedding Data - Edit di sini ya!
 const WEDDING_DATA = {
   groom: {
