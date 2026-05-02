@@ -40,7 +40,7 @@ h1, h2, h3 {
   color: var(--accent);
 }
 
-/* COVER - User assets (resized) */
+/* COVER */
 .cover {
   min-height: 100vh;
   display: flex;
@@ -49,7 +49,7 @@ h1, h2, h3 {
   align-items: center;
   text-align: center;
   background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-    url('https://res.cloudinary.com/dhkwhynff/image/upload/w_800,c_fill,f_auto,q_auto/w_800,c_fill,f_auto,q_auto/v1777706134/Pink_Beige_Illustrative_Romantic_Floral_Wedding_Banner_bwya9y.png');
+    url('https://i.ibb.co/5hMcXRjb/Cokelat-Putih-dan-Hitam-Minimalist-Pernikahan-Banner-6.png');
   background-size: cover;
   background-position: center;
 }
@@ -107,7 +107,7 @@ h1, h2, h3 {
   color: var(--bg-dark);
 }
 
-/* COUNTDOWN - User assets */
+/* COUNTDOWN */
 .countdown-section {
   min-height: 100vh;
   display: flex;
@@ -117,7 +117,7 @@ h1, h2, h3 {
   text-align: center;
   padding: 4rem 2rem;
   background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-    url('https://res.cloudinary.com/dhkwhynff/image/upload/w_800,c_fill,f_auto,q_auto/v1777706134/Pink_Beige_Illustrative_Romantic_Floral_Wedding_Banner_bwya9y.png');
+    url('https://i.ibb.co/nVNv6tq/Cokelat-Putih-dan-Hitam-Minimalist-Pernikahan-Banner-5.png');
   background-size: cover;
   background-position: center;
 }
@@ -157,12 +157,12 @@ h1, h2, h3 {
   opacity: 0.8;
 }
 
-/* SALAM - User assets */
+/* SALAM */
 .salam-section {
   padding: 6rem 2rem;
   text-align: center;
   background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
-    url('https://res.cloudinary.com/dhkwhynff/image/upload/w_800,c_fill,f_auto,q_auto/v1777706134/Pink_Beige_Illustrative_Romantic_Floral_Wedding_Banner_bwya9y.png');
+    url('https://i.ibb.co/93fFnKgf/Cokelat-Putih-dan-Hitam-Minimalist-Pernikahan-Banner-4.png');
   background-size: cover;
   background-position: center;
 }
@@ -180,11 +180,11 @@ h1, h2, h3 {
   line-height: 1.8;
 }
 
-/* COUPLE - From user assets */
+/* COUPLE */
 .couple-section {
   padding: 4rem 2rem;
-  background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),
-    url('https://res.cloudinary.com/dhkwhynff/image/upload/w_400,c_fill,f_auto,q_auto/v1777706117/Pngtree_indonesian_wedding_couple_wear_white_6431502_ztq8dh.png');
+  background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
+    url('https://i.ibb.co/KjqVZL10/Pngtree-indonesian-wedding-couple-wear-white-6431502.png');
   background-size: cover;
   background-position: center;
 }
@@ -216,11 +216,11 @@ h1, h2, h3 {
   margin: 1rem auto;
 }
 
-/* EVENTS - User assets */
+/* EVENTS */
 .event-section {
   padding: 6rem 2rem;
   background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
-    url('https://res.cloudinary.com/dhkwhynff/image/upload/w_800,c_fill,f_auto,q_auto/v1777706134/Pink_Beige_Illustrative_Romantic_Floral_Wedding_Banner_bwya9y.png');
+    url('https://i.ibb.co/PZrT1qMr/Cokelat-Putih-dan-Hitam-Minimalist-Pernikahan-Banner-3.png');
   background-size: cover;
   background-position: center;
 }
@@ -258,11 +258,11 @@ h1, h2, h3 {
   opacity: 0.7;
 }
 
-/* WISHES - User assets */
+/* WISHES */
 .wishes-section {
   padding: 6rem 2rem;
   background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
-    url('https://res.cloudinary.com/dhkwhynff/image/upload/w_800,c_fill,f_auto,q_auto/v1777706134/Pink_Beige_Illustrative_Romantic_Floral_Wedding_Banner_bwya9y.png');
+    url('https://i.ibb.co/5hMcXRjb/Cokelat-Putih-dan-Hitam-Minimalist-Pernikahan-Banner-6.png');
   background-size: cover;
   background-position: center;
 }
