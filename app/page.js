@@ -24,12 +24,6 @@ const WEDDING_DATA = {
       date: 'Kamis, 14 Mei 2026',
       time: '08.00 - 10.00 WIB',
       location: 'Masjid Al-Munawwir'
-    },
-    {
-      name: 'RESEPSI',
-      date: 'Kamis, 14 Mei 2026',
-      time: '11.00 - 14.00 WIB',
-      location: 'Gedung Pertemuan'
     }
   ]
 };
