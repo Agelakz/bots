@@ -11,7 +11,7 @@ const WEDDING_DATA = {
   },
   bride: {
     name: 'Mutyara Nurhifa Orvalla Putri',
-    father: 'Bapak Henry Irwansson',
+    father: 'Bapak Henry Irwansyah',
     mother: 'Ibu Fitria Andjani',
     image: 'https://res.cloudinary.com/dhkwhynff/image/upload/v1777706117/Pngtree_indonesian_wedding_couple_wear_white_6431502_ztq8dh.png'
   },
@@ -127,7 +127,7 @@ export default function Home() {
           </section>
 
           <section className="salam-section">
-            <h2>Assalamu'alaykum</h2>
+            <h2>Assalamu'alaikum</h2>
             <p className="salam-text"> Maha Suci Allah yang telah menciptakan pasangan manusia untuk saling mencintai. Dengan memohon rahmat dan ridho-NYA, kami bermaksud mengundang Anda untuk menyaksikan jenjang hidup kami.</p>
           </section>
 
