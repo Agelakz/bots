@@ -8,13 +8,13 @@ const WEDDING_DATA = {
     name: 'Muhammad Bayu Ramadhan',
     father: 'Bapak Suroso',
     mother: 'Ibu Tri Sayekti',
-    image: 'https://res.cloudinary.com/dhkwhynff/image/upload/w_400,c_fill/v1777706117/Pngtree_indonesian_wedding_couple_wear_white_6431502_ztq8dh.png' // Ganti foto cowok
+    image: 'https://res.cloudinary.com/dhkwhynff/image/upload/w_400,c_fill,f_auto,q_auto/v1777706117/Pngtree_indonesian_wedding_couple_wear_white_6431502_ztq8dh.png' // Ganti foto cowok
   },
   bride: {
     name: 'Mutyara Nurhifa Orvalla Putri',
     father: 'Bapak Henry Irwansson',
     mother: 'Ibu Fitria Andjani',
-    image: 'https://res.cloudinary.com/dhkwhynff/image/upload/w_400,c_fill/v1777706117/Pngtree_indonesian_wedding_couple_wear_white_6431502_ztq8dh.png' // Ganti foto cewek
+    image: 'https://res.cloudinary.com/dhkwhynff/image/upload/w_400,c_fill,f_auto,q_auto/v1777706117/Pngtree_indonesian_wedding_couple_wear_white_6431502_ztq8dh.png' // Ganti foto cewek
   },
   date: '2026-05-14',
   day: 'Kamis',
