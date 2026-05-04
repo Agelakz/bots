@@ -13,7 +13,7 @@ export default function Admin() {
     date: '2026-05-14',
     day: 'Kamis',
     time: '09.00 - 12.00 WITA',
-    location: 'Cangkop Haraken Space Mall Ocean Square Balikpapan, Lt. GF, Klandasan Ilir, Kec. Balikpapan Kota, Kota Balikpapan, Kalimantan Timur 76411',
+    location: 'Cangkop Haraken Space, Mall Ocean Square Balikpapan, Lt. GF, Klandasan Ilir, Kec. Balikpapan Kota, Kota Balikpapan, Kalimantan Timur 76411',
     music: ''
   });
   const [guests, setGuests] = useState([]);
