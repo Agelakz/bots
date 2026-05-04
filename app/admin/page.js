@@ -8,12 +8,12 @@ export default function Admin() {
     groomFather: 'Bapak Suroso',
     groomMother: 'Ibu Tri Sayekti',
     brideName: 'Mutyara Nurhifa Orvalla Putri',
-    brideFather: 'Bapak Henry Irwansson',
+    brideFather: 'Bapak Henry Irwansyah',
     brideMother: 'Ibu Fitria Andjani',
     date: '2026-05-14',
     day: 'Kamis',
-    time: '08.00 - 10.00 WIB',
-    location: 'Masjid Al-Munawwir',
+    time: '09.00 - 12.00 WITA',
+    location: 'Cangkop Haraken Space Mall Ocean Square Balikpapan, Lt. GF, Klandasan Ilir, Kec. Balikpapan Kota, Kota Balikpapan, Kalimantan Timur 76411',
     music: ''
   });
   const [guests, setGuests] = useState([]);
