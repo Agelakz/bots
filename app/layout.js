@@ -1,8 +1,8 @@
 import './globals.css'
 
 export const metadata = {
-  title: 'Bayu & Tyara - Wedding Invitation',
-  description: 'Undangan Pernikahan Bayu & Tyara',
+  title: 'Bayu & Mutyara - Wedding Invitation',
+  description: 'Undangan Pernikahan Bayu & Mutyara',
 }
 
 export default function RootLayout({ children }) {
