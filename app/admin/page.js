@@ -13,7 +13,8 @@ export default function Admin() {
     date: '2026-05-14',
     day: 'Kamis',
     time: '09.00 - 12.00 WITA',
-    location: 'Cangkop Haraken Space, Mall Ocean Square Balikpapan, Lt. GF, Klandasan Ilir, Kec. Balikpapan Kota, Kota Balikpapan, Kalimantan Timur 76411 https://www.google.com/maps/place/Cangkop+Haraken+Space/@-1.2768428,116.8409418,19z/data=!4m6!3m5!1s0x2df1478e7b5f09ef:0x92c164f46f872c46!8m2!3d-1.2769234!4d116.8409623!16s%2Fg%2F11v0wtyq38?entry=ttu&g_ep=EgoyMDI2MDQyOS4wIKXMDSoASAFQAw%3D%3D',
+    location: 'Cangkop Haraken Space - Ocean Square Balikpapan',
+    maps: 'https://www.google.com/maps/place/Cangkop+Haraken+Space/@-1.2768428,116.8409418,19z/data=!4m6!3m5!1s0x2df1478e7b5f09ef:0x92c164f46f872c46!8m2!3d-1.2769234!4d116.8409623!16s%2Fg%2F11v0wtyq38',
     music: ''
   });
   const [guests, setGuests] = useState([]);
@@ -74,6 +75,7 @@ export default function Admin() {
         <input type="date" value={data.date} onChange={e => updateField('date', e.target.value)} style={inputStyle} />
         <input type="text" placeholder="Jam" value={data.time} onChange={e => updateField('time', e.target.value)} style={inputStyle} />
         <input type="text" placeholder="Lokasi" value={data.location} onChange={e => updateField('location', e.target.value)} style={inputStyle} />
+        <input type="text" placeholder="Google Maps URL" value={data.maps} onChange={e => updateField('maps', e.target.value)} style={inputStyle} />
         <input type="text" placeholder="Music (URL)" value={data.music} onChange={e => updateField('music', e.target.value)} style={inputStyle} />
       </div>
 

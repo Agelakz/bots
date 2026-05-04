@@ -12,7 +12,8 @@ const DEFAULT = {
   date: '2026-05-14',
   day: 'Kamis',
   time: '09.00 - 12.00 WITA',
-  location: 'Cangkop Haraken Space Mall Ocean Square Balikpapan, Lt. GF, Klandasan Ilir, Kec. Balikpapan Kota, Kota Balikpapan, Kalimantan Timur 76411 https://www.google.com/maps/place/Cangkop+Haraken+Space/@-1.2768428,116.8409418,19z/data=!4m6!3m5!1s0x2df1478e7b5f09ef:0x92c164f46f872c46!8m2!3d-1.2769234!4d116.8409623!16s%2Fg%2F11v0wtyq38?entry=ttu&g_ep=EgoyMDI2MDQyOS4wIKXMDSoASAFQAw%3D%3D',
+  location: 'Cangkop Haraken Space - Ocean Square Balikpapan',
+  maps: 'https://www.google.com/maps/place/Cangkop+Haraken+Space/@-1.2768428,116.8409418,19z/data=!4m6!3m5!1s0x2df1478e7b5f09ef:0x92c164f46f872c46!8m2!3d-1.2769234!4d116.8409623!16s%2Fg%2F11v0wtyq38',
   music: ''
 };
 
@@ -47,6 +48,7 @@ function getWeddingData() {
   if (params.get('day')) data.day = params.get('day');
   if (params.get('time')) data.time = params.get('time');
   if (params.get('location')) data.location = params.get('location');
+  if (params.get('maps')) data.maps = params.get('maps');
   if (params.get('music')) data.music = params.get('music');
   
   return data;
@@ -99,7 +101,7 @@ export default function Home() {
         <section className="countdown-section"><p className="countdown-title">Hitung Mundur</p><p className="countdown-date">{data.day}, {new Date(data.date).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p><Countdown targetDate={data.date} /></section>
         <section className="salam-section"><h2>Assalamu&apos;alaikum</h2><p className="salam-text">Maha Suci Allah yang telah menciptakan pasangan manusia untuk saling mencintai. Dengan memohon rahmat dan ridho-NYA, kami bermaksud mengundang Anda untuk menyaksikan jenjang hidup kami.</p></section>
         <section className="couple-section"><div className="container"><div className="couple-card"><img src="https://res.cloudinary.com/dhkwhynff/image/upload/v1777706117/Pngtree_indonesian_wedding_couple_wear_white_6431502_ztq8dh.png" alt={data.groomName} className="couple-img" /><h3 className="couple-name">{data.groomName}</h3><p className="couple-parents">Putra dari {data.groomFather} & {data.groomMother}</p></div><span className="ampersand">&</span><div className="couple-card"><img src="https://res.cloudinary.com/dhkwhynff/image/upload/v1777706117/Pngtree_indonesian_wedding_couple_wear_white_6431502_ztq8dh.png" alt={data.brideName} className="couple-img" /><h3 className="couple-name">{data.brideName}</h3><p className="couple-parents">Putri dari {data.brideFather} & {data.brideMother}</p></div></div></section>
-        <section className="event-section"><h2 className="section-title">Jadwal Acara</h2><div className="events-grid"><div className="event-card"><h3>AKAD NIKAH</h3><p className="date">{data.day}, {new Date(data.date).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p><p className="time">{data.time}</p><p className="location">{data.location}</p></div></div></section>
+        <section className="event-section"><h2 className="section-title">Jadwal Acara</h2><div className="events-grid"><div className="event-card"><h3>AKAD NIKAH</h3><p className="date">{data.day}, {new Date(data.date).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p><p className="time">{data.time}</p><p className="location">{data.location}</p>{data.maps && <a href={data.maps} target="_blank" rel="noopener noreferrer" className="maps-link">📍 Lihat Peta</a>}</div></div></section>
         <section className="closing-section"><h2>Terima Kasih</h2><p className="closing-text">Kehadiran Anda merupakan kebahagiaan bagi kami.</p></section>
         <footer><p>{data.groomName.split(' ')[0]} & {data.brideName.split(' ')[0]}</p></footer>
       </>)}

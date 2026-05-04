@@ -59,6 +59,8 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 500; }
 .event-card .date { font-size: 1rem; font-weight: 500; margin-bottom: 0.4rem; }
 .event-card .time { font-size: 0.9rem; opacity: 0.75; margin-bottom: 0.4rem; }
 .event-card .location { font-size: 0.85rem; opacity: 0.65; }
+.maps-link { display: block; margin-top: 0.8rem; padding: 0.6rem 1rem; background: #C9A86C; color: #fff !important; text-decoration: none !important; border-radius: 6px; font-weight: 500; text-align: center; }
+.maps-link:hover { background: #b8975a; }
 
 /* WISHES */
 .wishes-section { padding: 5rem 2rem; background: var(--bg-cream); }
